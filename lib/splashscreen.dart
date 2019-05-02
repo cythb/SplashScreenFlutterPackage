@@ -33,22 +33,32 @@ class SplashScreen extends StatefulWidget {
         this.image,
         this.loadingText  = const Text(""),
         this.imageBackground,
-      	this.gradientBackground
+        this.gradientBackground
       }
       );
-
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Timer _timer;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
-    Timer(
+    _timer = Timer(
         Duration(seconds: widget.seconds),
             () {
+          if (!mounted) return;
+
           if (widget.navigateAfterSeconds is String) {
             // It's fairly safe to assume this is using the in-built material
             // named route component
@@ -76,9 +86,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 image: widget.imageBackground == null
                     ? null
                     : new DecorationImage(
-                        fit: BoxFit.cover,
-                        image: widget.imageBackground,
-                      ),
+                  fit: BoxFit.cover,
+                  image: widget.imageBackground,
+                ),
                 gradient: widget.gradientBackground,
                 color: widget.backgroundColor,
               ),
