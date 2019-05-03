@@ -105,6 +105,11 @@ class _SplashScreenState extends State<SplashScreen> {
               builder: (BuildContext context) =>
               widget
                   .navigateAfterSeconds));
+        } else if (widget.navigateAfterSeconds is Function) {
+          Navigator.of(context).pushReplacement(new MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  widget
+                      .navigateAfterSeconds()));
         } else {
           throw new ArgumentError(
               'widget.navigateAfterSeconds must either be a String or Widget'
