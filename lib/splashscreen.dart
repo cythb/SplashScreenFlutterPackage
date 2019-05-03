@@ -10,7 +10,7 @@ class SplashScreen extends StatefulWidget {
   final Color backgroundColor;
   final dynamic navigateAfterSeconds;
   final dynamic onClick;
-  final ImageProvider imageBackground;
+  final dynamic imageBackground;
 
   SplashScreen({
     @required this.seconds,
@@ -60,15 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
           fit: StackFit.loose,
           children: <Widget>[
             Container(
-              decoration: new BoxDecoration(
-                image: widget.imageBackground == null
-                    ? null
-                    : new DecorationImage(
-                  fit: BoxFit.cover,
-                  image: widget.imageBackground,
-                ),
-                color: widget.backgroundColor,
-              ),
+              child: widget.imageBackground ?? null,
+              color: widget.backgroundColor ?? Colors.white,
             ),
             Positioned(
               top: 40,
