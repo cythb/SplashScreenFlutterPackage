@@ -45,6 +45,9 @@ class _SplashScreenState extends State<SplashScreen> {
       setState(() {
         lastSeconds -= 1;
       });
+      if (lastSeconds < 0) {
+        timer.cancel();
+      }
     });
   }
 
