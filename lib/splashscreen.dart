@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: new InkWell(
         onTap: widget.onClick,
         child: new Stack(
-          fit: StackFit.loose,
+          fit: StackFit.expand,
           children: <Widget>[
             Container(
               child: widget.imageBackground ?? null,
